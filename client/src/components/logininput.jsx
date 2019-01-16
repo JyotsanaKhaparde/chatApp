@@ -1,11 +1,19 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : logininput.jsx
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 import React, { Component } from "react";
-class LoginInput extends Component
+import { ImageBackground } from 'react-native';
+import { userLogin } from "../services/userServices";
+class LoginInput extends Component 
 {
-    constructor(props)
+    constructor(props) 
     {
         super(props)
-        this.state =
-            {
+        this.state ={
                 username: '',
                 password: '',
             }
@@ -27,26 +35,24 @@ class LoginInput extends Component
         {
             alert('username cannot be empty');
         }
-        else if (this.state.password == "") 
+        else
+        if (this.state.password == "") 
         {
             alert('password cannot be empty');
         }
-        else if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.username)) 
+        else
+        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.username)) 
         {
             alert('Invalid username');
         }
-        else if (this.state.password.length < 8) 
+        else 
+        if (this.state.password.length < 8) 
         {
             alert('Password must be of atleast 8 characters long')
         }
         else 
         {
-            const
-                {
-                    username, password
-                } = this.state;
-            console.log(`User name was submitted: ${username}. Password was submitted: ${password}`);
-            window.location.href = "dashboard"
+            userLogin(this.state.username,this.state.password);
         }
     }
     registrationclick = (e) => 
@@ -54,15 +60,13 @@ class LoginInput extends Component
         e.preventDefault();
         window.location.href = "registraion"
     }
-    render() 
-    {
+    render() {
         return (
+            <ImageBackground source={require('../assets/images/bg.jpg')} class = 'imageContainer'>
+            </ImageBackground>
             <div>
                 <div className="container">
-                <form onSubmit={this.handleSubmit}>
-              
-                    
-                    
+                    <form onSubmit={this.handleSubmit}>
                         <div className="insideDiv">
                             <label><b>Username</b></label>
                             <input type="text" placeholder="useremail" name="username" value={this.state.username} onChange={this.handleusernameChange} />
@@ -70,17 +74,10 @@ class LoginInput extends Component
                             <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handlepasswordChange} />
                         </div>
                         <div className="btnDiv">
-                              
-                                         <button type="submit" id="button"><b>SIGN IN</b></button> 
-                                       <button type="submit" id="button" onClick={this.registrationclick}><b>REGISTRATION</b></button>
-                              
-                            </div>
-                        
-                           
-                        
-                    
-                
-                </form>
+                            <button type="submit" id="button"><b>SIGN IN</b></button>
+                            <button type="submit" id="button" onClick={this.registrationclick}><b>REGISTRATION</b></button>
+                        </div>
+                    </form>
                 </div>
             </div>
         )

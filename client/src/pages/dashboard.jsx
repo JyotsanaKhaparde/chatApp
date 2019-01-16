@@ -1,3 +1,10 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : dashboard.jsx
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 import React, { Component } from "react";
 import DashboardInput from '../components/dashboardinput';
 import { Button } from "@material-ui/core";

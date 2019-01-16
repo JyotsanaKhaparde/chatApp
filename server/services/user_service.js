@@ -1,19 +1,35 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : user_service.js
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 const userModel = require('../app/models/user');
-
-exports.registration = (data, callback) => {
-    userModel.save(data, (err, result) => {
-        if (err) {
+exports.registration = (data, callback) => 
+{
+    userModel.save(data, (err, result) => 
+    {
+        if (err) 
+        {
             callback(err)
-        } else {
+        } 
+        else 
+        {
             callback(null, result);
         }
     })
 }
-exports.login = (data, callback) => {
-    userModel.findOne(data, (err, result) => {
-        if (err) {
+exports.login = (data, callback) => 
+{
+    userModel.findOne(data, (err, result) => 
+    {
+        if (err) 
+        {
             callback(err)
-        } else {
+        } 
+        else 
+        {
             callback(null, result);
         }
     })

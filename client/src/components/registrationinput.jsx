@@ -1,11 +1,18 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : registrationinput.jsx
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 import React, { Component } from "react";
-class RegistrationInput extends Component
+import { userRegister } from "../services/userServices";
+class RegistrationInput extends Component 
 {
-    constructor(props)
+    constructor(props) 
     {
         super(props)
-        this.state =
-            {
+        this.state = {
                 firstname: '',
                 lastname: '',
                 email: '',
@@ -41,78 +48,80 @@ class RegistrationInput extends Component
     }
     handleSubmit = (event) => 
     {
-        if(this.state.firstname == "")
+        if (this.state.firstname == "") 
         {
             alert('firstname cannot be empty');
         }
-        else if(this.state.lastname == "")
+        else 
+        if (this.state.lastname == "") 
         {
             alert('lastname cannot be empty');
         }
-        else if(this.state.email == "")
+        else 
+        if (this.state.email == "") 
         {
             alert('email cannot be empty');
         }
-        else if(this.state.password == "")
+        else 
+        if (this.state.password == "") 
         {
             alert('password cannot be empty');
         }
-        else if(!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email))
+        else 
+        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) 
         {
             alert('Invalid email');
         }
-        else if(this.state.password.length < 8)
+        else 
+        if (this.state.password.length < 8) 
         {
             alert('Password must be of atleast 8 characters long')
         }
-        else if(this.state.confirmpassword == "")
+        else 
+        if (this.state.confirmpassword == "") 
         {
             alert('Confirm password cannot be empty');
         }
-        else if(this.state.password !== this.state.confirmpassword)
+        else 
+        if (this.state.password !== this.state.confirmpassword) 
         {
             alert('Password and confirm password must be same');
         }
         else
         {
             event.preventDefault()
-            const
-                {
-                    firstname, lastname, email, password, confirmpassword
-                } = this.state;
-            console.log(`User first name was submitted: ${firstname}. User last name was submitted: ${lastname}.user email was submitted: ${email}.user password was submitted: ${password}.usre confirm password was submitted: ${confirmpassword}`);
-            window.location.href = "login"
+            userRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password);
         }
     }
     resetForm = () => 
     {
         this.setState(this.baseState)
     }
-    render()
+    render() 
     {
         return (
             <div>
                 <form>
                     <div className="container">
-                        <center>
+                        <div className="insideDiv">
                             <table>
                                 <tr><td>First Name</td>
-                                    <td><input type="text" placeholder="Enter First Name" value={this.state.firstname} onChange={this.handleuserfirstnameChange} /></td>
+                                    <td><input type="text" placeholder="Enter First Name" name="firstname" value={this.state.firstname} onChange={this.handleuserfirstnameChange} /></td>
                                 </tr>
                                 <tr><td>Last Name</td>
-                                    <td><input type="text" placeholder="Enter Last Name" value={this.state.lastname} onChange={this.handleuserlastnameChange} /></td>
+                                    <td><input type="text" placeholder="Enter Last Name" name="lastname" value={this.state.lastname} onChange={this.handleuserlastnameChange} /></td>
                                 </tr>
                                 <tr><td>Email Address</td>
-                                    <td><input type="text" placeholder="Enter Email" value={this.state.email} onChange={this.handleuseremailChange} /></td>
+                                    <td><input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.handleuseremailChange} /></td>
                                 </tr>
                                 <tr><td>Password</td>
-                                    <td><input type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handlepasswordChange} /></td>
+                                    <td><input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handlepasswordChange} /></td>
                                 </tr>
                                 <tr><td>Confirm Password</td>
-                                    <td><input type="password" placeholder="Enter Confirm Password" value={this.state.confirmpassword} onChange={this.handleconfirmpasswordChange} /></td>
+                                    <td><input type="password" placeholder="Enter Confirm Password" value="confirmpassword" value={this.state.confirmpassword} onChange={this.handleconfirmpasswordChange} /></td>
                                 </tr>
                             </table>
-                        </center>
+                        </div>
                     </div>
                     <div id="important">
                         <center>

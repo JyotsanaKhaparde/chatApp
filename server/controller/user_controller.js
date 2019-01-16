@@ -1,27 +1,43 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : user_controller.js
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 const userService = require('../services/user_service');
-
-exports.registration = (req, res) => {
+exports.registration = (req, res) => 
+{
     var responseResult = {};
-    userService.registration(req.body, (err, result) => {
-        if (err) {
+    userService.registration(req.body, (err, result) => 
+    {
+        if (err) 
+        {
             responseResult.success = false;
             responseResult.error = err;
             res.status(500).send(responseResult)
-        } else {
+        } 
+        else 
+        {
             responseResult.success = true;
             responseResult.result = result;
             res.status(200).send(responseResult);
         }
     })
 }
-exports.login = (req, res) => {
+exports.login = (req, res) => 
+{
     var responseResult = {};
-    userService.login(req.body, (err, result) => {
-        if (err) {
+    userService.login(req.body, (err, result) => 
+    {
+        if (err) 
+        {
             responseResult.success = false;
             responseResult.error = err;
             res.status(500).send(responseResult)
-        } else {
+        } 
+        else 
+        {
             responseResult.success = true;
             responseResult.result = result;
             res.status(200).send(responseResult);

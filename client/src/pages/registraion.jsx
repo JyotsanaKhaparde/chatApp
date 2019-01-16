@@ -1,3 +1,10 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : registration.jsx
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 import React, { Component } from "react";
 import RegistrationInput from "../components/registrationinput";
 class Registraion extends Component
@@ -6,8 +13,8 @@ class Registraion extends Component
     {
         return(
             <div>
-                <div class = "container">
-                    <h1><center>Registration</center></h1>
+                <div class = "regtext">
+                    <h1>Registration</h1>
                 </div>
                 <div>
                     <RegistrationInput/>

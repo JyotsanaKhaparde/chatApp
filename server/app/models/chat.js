@@ -1,33 +1,43 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : chat.js
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 const mongoose = require('mongoose');
-
 const ChatSchema = mongoose.Schema({
-    senderName: {
+    senderName:
+    {
         type: String
     },
-    reciverName: {
+    reciverName:
+    {
         type: String
     },
-    message: {
+    message:
+    {
         type: String
     },
-   
 });
-
 var chat = mongoose.model('Chat', ChatSchema);
-
-function chatModel() {
+function chatModel() 
+{
 
 }
-
-chatModel.prototype.save = (data, callback) => {
+chatModel.prototype.save = (data, callback) => 
+{
     var newData = new chat(data);
-    newData.save((err, result) => {
-        if (err) {
+    newData.save((err, result) => 
+    {
+        if (err) 
+        {
             callback(err);
-        } else {
+        } 
+        else 
+        {
             callback(null, result);
         }
     })
 }
-
 module.exports = new chatModel();

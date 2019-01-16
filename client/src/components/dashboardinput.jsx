@@ -1,3 +1,10 @@
+/***********************************************************************************
+ *  Purpose         : 
+ *  @file           : dashboardinput.jsx
+ *  @author         : Jyotsana Khaparde
+ *  @version        : 1.0
+ *  @since          : 16/01/2019
+ **********************************************************************************/
 import React, { Component } from "react";
 import { TextField, Button } from '@material-ui/core'
 class DashboardInput extends Component
