@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : given routes using router.
  *  @file           : router.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

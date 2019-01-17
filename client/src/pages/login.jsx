@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : To render atlist onece and give the path of components.
  *  @file           : login.jsx
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0
@@ -13,6 +13,8 @@ class Login extends Component
     {
         return (
             <div>
+                 <div className = "App_aside"></div>
+                <div className = "App_form"></div>
                 <div>
                     <h1><center>Log in</center></h1>
                 </div>

@@ -1,5 +1,6 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : It's for taking data and callback function according to error 
+ *                    or result.
  *  @file           : chat_service.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

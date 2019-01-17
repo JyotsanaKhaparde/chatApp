@@ -1,5 +1,6 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : This is a entery point for backend here configuring the database and
+ *                    connecting to the database.
  *  @file           : server.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

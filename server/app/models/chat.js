@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : It is use for making schema for chat.
  *  @file           : chat.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

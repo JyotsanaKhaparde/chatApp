@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : It is use for making schema for registration and login.
  *  @file           : user.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

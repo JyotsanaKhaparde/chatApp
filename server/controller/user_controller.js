@@ -1,5 +1,7 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : user_contriller is for checking that request body of 
+ *                    registration and login have error or not and according to it 
+ *                    it gives response result.
  *  @file           : user_controller.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

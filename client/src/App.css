@@ -77,12 +77,12 @@ span.psw {
 /******************************/
 
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+/*body of page*/
 body{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
- /* background: url(bg.jpg) no-repeat;
-  background-size: cover; */
+ 
 }
 .login-box{
   width: 280px;
@@ -132,7 +132,7 @@ body{
   cursor: pointer;
   margin: 10px 0;
 }
-
+/*changes for chat text field*/
 #chatTextField{
   width: 1000px;
   height: 300px;
@@ -150,6 +150,7 @@ body{
   border-radius: 4px;
   background-color: #4CAF50;
 }
+/*changes for login button*/
 #logoutButton{
   width:200px;
   margin-left: 132px;
@@ -186,4 +187,16 @@ body{
 .imageContainer{
   flex: 1;
   align-items: center;
+}
+
+.App_aside{
+ width: 50px;
+ background-color: rgb(171, 192, 192);
+}
+.App_form{
+  padding: 16px;
+  display: flex;
+  padding-left: 300px;
+  background-color: rgb(181, 202, 241) ;
+  overflow: auto;
 }

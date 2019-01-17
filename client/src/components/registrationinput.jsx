@@ -1,5 +1,6 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : Taking input and creating front end page using react and sends 
+ *                    the input in services.
  *  @file           : registrationinput.jsx
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

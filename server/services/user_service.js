@@ -1,5 +1,6 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : It's for taking data and callback function of registration and 
+ *                    login according to error or result.
  *  @file           : user_service.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0

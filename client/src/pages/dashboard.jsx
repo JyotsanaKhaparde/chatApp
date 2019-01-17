@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : To render atlist onece and give the path of components.
  *  @file           : dashboard.jsx
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0
@@ -20,7 +20,7 @@ class Dashboard extends Component
         return (
             <div>
                 <div class="container">
-                    <h1 style={{ marginLeft: "437px" }}>Welcome to ChatApp</h1>
+                    <h1 style={{ marginLeft: "207px" }}>Welcome to ChatApp</h1>
                     <Button id="logoutButton" onClick={this.logoutclick}>LOGOUT</Button>
                 </div>
                 <div>

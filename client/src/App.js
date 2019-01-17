@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : App.js is main entry point of client side and for route component.
  *  @file           : App.js
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0
@@ -18,9 +18,9 @@ class App extends Component {
       <div>
         <Router>
           <div className="App">
-            <Route path="/login" component={Login}></Route>
+            <Route path="/login" component={Login}></Route> 
             <Route path="/registraion" component={Registraion}></Route>
-            <Route path = "/dashboard" component={Dashboard}></Route>
+            <Route path = "/dashboard" component={Dashboard}></Route> 
           </div>
         </Router>
       </div>

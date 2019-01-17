@@ -1,5 +1,5 @@
 /***********************************************************************************
- *  Purpose         : 
+ *  Purpose         : To render atlist onece and give the path of components.
  *  @file           : registration.jsx
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0
@@ -17,7 +17,7 @@ class Registraion extends Component
                     <h1>Registration</h1>
                 </div>
                 <div>
-                    <RegistrationInput/>
+                    <RegistrationInput/>  
                 </div>
             </div>
         )
