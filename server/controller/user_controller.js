@@ -8,7 +8,7 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 const userService = require('../services/user_service');
-const { check,validationResult } = require('express-validator/check')
+const { check, validationResult } = require('express-validator/check')
 exports.registration = (req, res) => {
     var responseResult = {};
     check('firstName', 'First name can not be empty').isEmpty();
@@ -19,9 +19,8 @@ exports.registration = (req, res) => {
     check('email', 'User name must be an email').isEmail();
     check('password', 'Password cannot be empty').isEmpty();
     check('password', 'Password must be atleast 8 characters long').isLength({ min: 8 });
-
     // Find the validation errors in this request
-    const errors = validationResult(req);    
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).send({
             status: false,
@@ -56,13 +55,11 @@ exports.login = (req, res) => {
         }
     })
 }
-
-exports.getAllUserName = (req,res) => {
+exports.getAllUserName = (req, res) => {
     var responseResult = {};
     userService.getAllUserName((err, result) => {
         if (err) {
             console.log("in ctrl");
-            
             responseResult.success = false;
             responseResult.error = err;
             res.status(500).send(responseResult)

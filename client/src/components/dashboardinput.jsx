@@ -10,14 +10,11 @@ import React, { Component } from "react";
 import { TextField, Button, MenuItem } from '@material-ui/core'
 import io from 'socket.io-client';
 import { getUser, displayChat } from "../services/chatservice";
-
-//import './App.css';
 const socket = io.connect('http://localhost:3002');
 socket.emit('new_msg', "hello");
 socket.on('send_msg', (data) => {
     console.log(data);
 })
-
 class DashboardInput extends Component {
     constructor(props) {
         super(props);
@@ -47,35 +44,32 @@ class DashboardInput extends Component {
         event.preventDefault();
         displayChat(this.state.message);
         this.setState({
-            message:'',
-            anchorEl : null
+            message: '',
+            anchorEl: null
         })
-        this.setState({displayMessage : this.state.message})
+        this.setState({ displayMessage: this.state.message })
         this.state.arrayOfMessage.push(this.state.message);
-        console.log('message array: ',this.state.arrayOfMessage);
-        this.handleClick = this.handleClick.bind(this);     
+        console.log('message array: ', this.state.arrayOfMessage);
+        this.handleClick = this.handleClick.bind(this);
     }
-    handleClick = (key,event) => {
-        this.setState({anchorEl : null});
-        console.log('selected receiver : ',this.target.textContent);       
+    handleClick = (key, event) => {
+        this.setState({ anchorEl: null });
+        console.log('selected receiver : ', this.target.textContent);
     }
     render() {
-        const loginUser = this.state.usersData.map((key) => {
-            if(key.email !== localStorage.getItem('sender')){
-                return (
-                    <MenuItem>{key.email}</MenuItem>
-                )
-            }
-        })
         return (
             <div>
                 <div style={{ display: "flex", flexDirection: "row", height: "515px" }}>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <div>
                             <h3>Online User</h3>
-                            {/* <textarea id="onlineUser" />   */}
-                             {loginUser}
-                        </div>                    
+
+                            {this.state.usersData.map((key) =>
+                                key.email !== localStorage.getItem('sender') ?
+                                    <MenuItem>{key.email}</MenuItem>
+                                    : null
+                            )}
+                        </div>
                     </div>
                     <textarea id="chatTextField" />
                 </div>

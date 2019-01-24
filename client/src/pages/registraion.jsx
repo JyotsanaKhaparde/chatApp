@@ -7,17 +7,15 @@
  **********************************************************************************/
 import React, { Component } from "react";
 import RegistrationInput from "../components/registrationinput";
-class Registraion extends Component
-{
-    render()
-    {
-        return(
+class Registraion extends Component {
+    render() {
+        return (
             <div>
-                <div class = "regtext">
+                <div class="regtext">
                     <h1>Registration</h1>
                 </div>
                 <div>
-                    <RegistrationInput/>  
+                    <RegistrationInput />
                 </div>
             </div>
         )

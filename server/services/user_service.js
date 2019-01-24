@@ -7,42 +7,30 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 const userModel = require('../app/models/user');
-exports.registration = (data, callback) => 
-{
-    userModel.save(data, (err, result) => 
-    {
-        if (err) 
-        {
+exports.registration = (data, callback) => {
+    userModel.save(data, (err, result) => {
+        if (err) {
             callback(err)
-        } 
-        else 
-        {
+        }
+        else {
             callback(null, result);
         }
     })
 }
-exports.login = (data, callback) => 
-{
-    userModel.findOne(data, (err, result) => 
-    {
-        if (err) 
-        {
+exports.login = (data, callback) => {
+    userModel.findOne(data, (err, result) => {
+        if (err) {
             callback(err)
-        } 
-        else 
-        {
+        }
+        else {
             callback(null, result);
         }
     })
 }
-
-exports.getAllUserName = (req,callback) => 
-{
-    userModel.getAllUserName(req,(err, result) => 
-    {     
+exports.getAllUserName = (req, callback) => {
+    userModel.getAllUserName(req, (err, result) => {
         console.log("in service");
-        
-        if (err) {     
+        if (err) {
             callback(err);
         } else {
             callback(null, result);

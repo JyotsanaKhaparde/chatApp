@@ -7,103 +7,84 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 import React, { Component } from "react";
-import {ToastContainer , toast} from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { userRegister } from "../services/userServices";
-class RegistrationInput extends Component 
-{
-    constructor(props) 
-    {
+class RegistrationInput extends Component {
+    constructor(props) {
         super(props)
         this.state = {
-                firstname: '',
-                lastname: '',
-                email: '',
-                password: '',
-                confirmpassword: '',
-                toast: false,
-            }
+            firstname: '',
+            lastname: '',
+            email: '',
+            password: '',
+            confirmpassword: '',
+            toast: false,
+        }
         this.baseState = this.state
     }
-    handleuserfirstnameChange = (event) => 
-    {
+    handleuserfirstnameChange = (event) => {
         const firstname = event.target.value
         this.setState({ firstname: firstname })
     }
-    handleuserlastnameChange = (event) => 
-    {
+    handleuserlastnameChange = (event) => {
         const lastname = event.target.value
         this.setState({ lastname: lastname })
     }
-    handleuseremailChange = (event) => 
-    {
+    handleuseremailChange = (event) => {
         const email = event.target.value
         this.setState({ email: email })
     }
-    handlepasswordChange = (event) => 
-    {
+    handlepasswordChange = (event) => {
         const password = event.target.value
         this.setState({ password: password })
     }
-    handleconfirmpasswordChange = (event) => 
-    {
+    handleconfirmpasswordChange = (event) => {
         const confirmpassword = event.target.value
         this.setState({ confirmpassword: confirmpassword })
     }
-    handleSubmit = (event) => 
-    {
+    handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.firstname == "") 
-        {
-            toast("firstname cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (this.state.lastname == "") 
-        {
-            toast("lastname cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (this.state.email == "") 
-        {
-            toast("email cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (this.state.password == "") 
-        {
-            toast("password cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) 
-        {
-            toast("Invalid email",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (this.state.password.length < 8) 
-        {
-            toast("password must be of atleast 8 character long",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (this.state.confirmpassword == "") 
-        {
-            toast("Confirm password con not be empty",{position: toast.POSITION.BOTTOM_CENTER});
-        }
-        else 
-        if (this.state.password !== this.state.confirmpassword) 
-        {
-            toast("Password and confirm password must be same",{position: toast.POSITION.BOTTOM_CENTER});
+        if (this.state.firstname == "") {
+            toast("firstname cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
         }
         else
-        {
-            event.preventDefault()
-            userRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password);
-        }
+            if (this.state.lastname == "") {
+                toast("lastname cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
+            }
+            else
+                if (this.state.email == "") {
+                    toast("email cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
+                }
+                else
+                    if (this.state.password == "") {
+                        toast("password cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
+                    }
+                    else
+                        if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) {
+                            toast("Invalid email", { position: toast.POSITION.BOTTOM_CENTER });
+                        }
+                        else
+                            if (this.state.password.length < 8) {
+                                toast("password must be of atleast 8 character long", { position: toast.POSITION.BOTTOM_CENTER });
+                            }
+                            else
+                                if (this.state.confirmpassword == "") {
+                                    toast("Confirm password con not be empty", { position: toast.POSITION.BOTTOM_CENTER });
+                                }
+                                else
+                                    if (this.state.password !== this.state.confirmpassword) {
+                                        toast("Password and confirm password must be same", { position: toast.POSITION.BOTTOM_CENTER });
+                                    }
+                                    else {
+                                        event.preventDefault()
+                                        userRegister(this.state.firstname, this.state.lastname, this.state.email, this.state.password);
+                                    }
     }
-    resetForm = () => 
-    {
+    resetForm = () => {
         this.setState(this.baseState)
     }
-    render() 
-    {
+    render() {
         return (
             <div>
                 <form>
@@ -139,7 +120,7 @@ class RegistrationInput extends Component
                         </center>
                     </div>
                 </form>
-                <ToastContainer/>
+                <ToastContainer />
             </div>
         )
     }

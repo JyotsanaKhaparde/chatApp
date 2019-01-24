@@ -8,15 +8,12 @@
 import React, { Component } from "react";
 import DashboardInput from '../components/dashboardinput';
 import { Button } from "@material-ui/core";
-class Dashboard extends Component
-{
-    logoutclick = (e) =>
-    {
+class Dashboard extends Component {
+    logoutclick = (e) => {
         e.preventDefault();
         window.location.href = "login"
     }
-    render()
-    {
+    render() {
         return (
             <div>
                 <div className="container">

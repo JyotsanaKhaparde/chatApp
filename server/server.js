@@ -24,15 +24,14 @@ app.use('/', router);
 mongoose.Promise = global.Promise;
 // Connecting to the database
 mongoose.connect(dbConfig.url,
-    {
-        useNewUrlParser: true
-    }).then(() => {
-        console.log("Successfully connected to the database");
-    }).catch(err => {
-        console.log('Could not connect to the database. Exiting now...', err);
-        process.exit();
-    });
-
+{
+    useNewUrlParser: true
+}).then(() => {
+    console.log("Successfully connected to the database");
+}).catch(err => {
+    console.log('Could not connect to the database. Exiting now...', err);
+    process.exit();
+});
 server.listen(process.env.PORT || 3002)
 console.log('Server running..');
 app.get('/', function (req, res) {
@@ -42,9 +41,6 @@ app.get('/', function (req, res) {
 io.sockets.on('connection', function (socket) {
     connections.push(socket)
     console.log('Connected :  %s socket connected', connections.length);
-    socket.on('chat',function(data){
-        io.sockets.emit('chat',data);
-    });
     socket.on('new_msg', function (data) {
         console.log(data);
     })
@@ -52,6 +48,5 @@ io.sockets.on('connection', function (socket) {
 })
 //Whenever someone disconnects this piece of code executed
 io.on('disconnect', function (data) {
-    connections.splice(connections.indexOf(socket), 1)
     console.log('Disconnected : %s socket connected', connections.length);
 })

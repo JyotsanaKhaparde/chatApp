@@ -7,14 +7,12 @@
  **********************************************************************************/
 import React, { Component } from "react";
 import LoginInput from "../components/logininput";
-class Login extends Component 
-{
-    render() 
-    {
+class Login extends Component {
+    render() {
         return (
             <div>
-                 <div className = "App_aside"></div>
-                <div className = "App_form"></div>
+                <div className="App_aside"></div>
+                <div className="App_form"></div>
                 <div>
                     <h1><center>Log in</center></h1>
                 </div>

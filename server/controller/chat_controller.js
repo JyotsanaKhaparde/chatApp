@@ -9,9 +9,7 @@
  **********************************************************************************/
 const chatService = require('../services/chat_service');
 const { check, resultValidation } = require('express-validator/check')
-
-exports.dashboard = (req, res) => 
-{
+exports.dashboard = (req, res) => {
     var responseResult = {};
     check('senderName', 'sender name can not be empty').isEmpty();
     check('senderName', 'sender name should contain only alphabets').isAlpha();
@@ -25,16 +23,13 @@ exports.dashboard = (req, res) =>
             message: err,
         });
     }
-    chatService.dashboard(req.body, (err, result) => 
-    {
-        if (err) 
-        {
+    chatService.dashboard(req.body, (err, result) => {
+        if (err) {
             responseResult.success = false;
             responseResult.error = err;
             res.status(500).send(responseResult)
-        } 
-        else 
-        {
+        }
+        else {
             responseResult.success = true;
             responseResult.result = result;
             res.status(200).send(responseResult);
