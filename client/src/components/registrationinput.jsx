@@ -7,6 +7,8 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 import React, { Component } from "react";
+import {ToastContainer , toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { userRegister } from "../services/userServices";
 class RegistrationInput extends Component 
 {
@@ -18,7 +20,8 @@ class RegistrationInput extends Component
                 lastname: '',
                 email: '',
                 password: '',
-                confirmpassword: ''
+                confirmpassword: '',
+                toast: false,
             }
         this.baseState = this.state
     }
@@ -49,44 +52,45 @@ class RegistrationInput extends Component
     }
     handleSubmit = (event) => 
     {
+        event.preventDefault();
         if (this.state.firstname == "") 
         {
-            alert('firstname cannot be empty');
+            toast("firstname cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.lastname == "") 
         {
-            alert('lastname cannot be empty');
+            toast("lastname cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.email == "") 
         {
-            alert('email cannot be empty');
+            toast("email cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.password == "") 
         {
-            alert('password cannot be empty');
+            toast("password cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.email)) 
         {
-            alert('Invalid email');
+            toast("Invalid email",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.password.length < 8) 
         {
-            alert('Password must be of atleast 8 characters long')
+            toast("password must be of atleast 8 character long",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.confirmpassword == "") 
         {
-            alert('Confirm password cannot be empty');
+            toast("Confirm password con not be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.password !== this.state.confirmpassword) 
         {
-            alert('Password and confirm password must be same');
+            toast("Password and confirm password must be same",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else
         {
@@ -103,7 +107,7 @@ class RegistrationInput extends Component
         return (
             <div>
                 <form>
-                    <div className="container">
+                    <div className="container" className="App_form">
                         <div className="insideDiv">
                             <table>
                                 <tr><td>First Name</td>
@@ -135,6 +139,7 @@ class RegistrationInput extends Component
                         </center>
                     </div>
                 </form>
+                <ToastContainer/>
             </div>
         )
     }

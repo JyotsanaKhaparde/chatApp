@@ -7,8 +7,10 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 import React, { Component } from "react";
-//import { ImageBackground } from 'react-native';
-import { userLogin } from "../services/userServices";
+import {ToastContainer , toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {userLogin} from "../services/userServices";
+import {withRouter} from "react-router-dom";
 class LoginInput extends Component 
 {
     constructor(props) 
@@ -17,6 +19,7 @@ class LoginInput extends Component
         this.state ={
                 username: '',
                 password: '',
+                toast: false,
             }
     }
     handlepasswordChange = (event) => 
@@ -34,22 +37,22 @@ class LoginInput extends Component
         event.preventDefault();
         if (this.state.username == "") //validation for username
         {
-            alert('username cannot be empty');
+            toast("username cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else
         if (this.state.password == "") //validation for password
         {
-            alert('password cannot be empty');
+            toast("password cannot be empty",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else
         if (!/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/.test(this.state.username)) 
         {
-            alert('Invalid username');
+            toast("Invalid username",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         if (this.state.password.length < 8) //validation for password length
         {
-            alert('Password must be of atleast 8 characters long')
+            toast("Password must be of atleast 8 characters long",{position: toast.POSITION.BOTTOM_CENTER});
         }
         else 
         {
@@ -59,7 +62,7 @@ class LoginInput extends Component
     registrationclick = (e) => 
     {
         e.preventDefault(); //for preventing reload the page
-        window.location.href = "registraion"
+        this.props.history.push('/registraion');
     }
     render() 
     {
@@ -77,10 +80,11 @@ class LoginInput extends Component
                             <button type="submit" id="button"><b>SIGN IN</b></button>
                             <button type="submit" id="button" onClick={this.registrationclick}><b>REGISTRATION</b></button>
                         </div>
-                    </form>
+                    </form>              
                 </div>
+                <ToastContainer/>
             </div>
         )
     }
 }
-export default LoginInput;
+export default withRouter(LoginInput);

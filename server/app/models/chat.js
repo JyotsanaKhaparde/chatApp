@@ -5,39 +5,51 @@
  *  @version        : 1.0
  *  @since          : 16/01/2019
  **********************************************************************************/
-const mongoose = require('mongoose');
-const ChatSchema = mongoose.Schema({
-    senderName:
+//require mongoose
+ const mongoose = require('mongoose');
+ //create instance of schema
+var mongoSchema = mongoose.Schema;
+var ChatSchema = new mongoSchema({
+    'senderId:':
     {
-        type: String
+        type: mongoSchema.Types.ObjectId,
+        ref : 'user',
+        required : true
     },
-    reciverName:
+    'receiverId':
     {
-        type: String
+        type: mongoSchema.Types.ObjectId,
+        ref : 'user',
+        required : true
     },
-    message:
+    'message':
     {
-        type: String
+        type: mongoSchema.Types.ObjectId,
+        ref : 'user',
+        required : true
     },
 });
-var chat = mongoose.model('Chat', ChatSchema);
 function chatModel() 
 {
 
 }
 chatModel.prototype.save = (data, callback) => 
 {
-    var newData = new chat(data);
-    newData.save((err, result) => 
+    const newMsg = new data({
+        'senderId' : data.senderId,
+        'receiverId' : data.receiverId,
+        'message' : data.message
+        });
+    newMsg.save((err, result) => 
     {
         if (err) 
         {
-            callback(err);
+            return callback(err);
         } 
         else 
         {
-            callback(null, result);
+            return callback(null, result);
         }
-    })
+    });
 }
 module.exports = new chatModel();

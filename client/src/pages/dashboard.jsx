@@ -19,7 +19,7 @@ class Dashboard extends Component
     {
         return (
             <div>
-                <div class="container">
+                <div className="container">
                     <h1 style={{ marginLeft: "207px" }}>Welcome to ChatApp</h1>
                     <Button id="logoutButton" onClick={this.logoutclick}>LOGOUT</Button>
                 </div>

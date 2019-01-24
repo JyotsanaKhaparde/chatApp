@@ -35,3 +35,17 @@ exports.login = (data, callback) =>
         }
     })
 }
+
+exports.getAllUserName = (req,callback) => 
+{
+    userModel.getAllUserName(req,(err, result) => 
+    {     
+        console.log("in service");
+        
+        if (err) {     
+            callback(err);
+        } else {
+            callback(null, result);
+        }
+    })
+}

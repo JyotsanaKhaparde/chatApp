@@ -6,6 +6,8 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 import axios from 'axios';
+import {ToastContainer , toast} from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 function userRegister(firstname, lastname, email, password) 
 {
     axios.post('/registration', 
@@ -13,38 +15,42 @@ function userRegister(firstname, lastname, email, password)
         firstName: firstname,
         lastName: lastname,
         email: email,
-        password: password
+        password: password,
+        toast : false
     })
         .then(function (response) 
         {
+            toast("Registered Successfully.....",{position: toast.POSITION.BOTTOM_CENTER});
             console.log(response);
-            alert('Registered Successfully!!');
             window.location.href = '/login'
         })
         .catch(function (err) 
         {
             console.log(err);
-            alert('User with this Username already exists!!');
+            toast("User with this Username already exists",{position: toast.POSITION.BOTTOM_CENTER});
         });
+       
 }
 function userLogin(username, password) 
 {
+    //send the data to server
     axios.post('/login', 
     {
         email: username,
-        password: password
+        password: password,
+        toast : false
     })
         .then(function (response) 
         {
+            toast("Login Successfully.....",{position: toast.POSITION.BOTTOM_CENTER});
             console.log(response);
-            alert('Login Successfully!!');
             window.location.href = '/dashboard'
         })
         .catch(function (err) 
         {
+            toast("Login Unsuccessful.....",{position: toast.POSITION.BOTTOM_CENTER});
             console.log(err);
-            alert('Login Unsuccessful..!!!!!');
-        });
+        });  
 }
 export {
     userRegister,

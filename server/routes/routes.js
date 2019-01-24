@@ -13,5 +13,6 @@ const chatController = require('../controller/chat_controller');
 router.post('/registration', userController.registration);
 router.post('/login', userController.login);
 router.post('/dashboard', chatController.dashboard);
+router.get('/getAllUserName', userController.getAllUserName);
 
 module.exports = router;

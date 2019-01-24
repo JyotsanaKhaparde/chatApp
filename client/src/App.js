@@ -11,10 +11,10 @@ import './App.css';
 import Login from './pages/login';
 import Registraion from './pages/registraion';
 import Dashboard from './pages/dashboard';
+
 class App extends Component {
   render() {
-    return (
-      
+    return (      
       <div>
         <Router>
           <div className="App">

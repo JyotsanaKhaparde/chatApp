@@ -15,7 +15,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: rgb(34, 70, 138);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -54,7 +54,7 @@ img.avatar {
 .container {
   padding: 16px;
   display: flex;
-  padding-left: 300px;
+  padding-left: 205px;
 }
 
 /* The "Forgot password" text */
@@ -134,10 +134,18 @@ body{
 }
 /*changes for chat text field*/
 #chatTextField{
-  width: 1000px;
+width: 1000px;
+height: 500px;
+margin-left: 50px;
+}
+/*changers for online user */
+#onlineUser{
+  /* width: 5px;
   height: 300px;
-  margin-left: 162px;
-  margin-top: 0px
+  padding-left: 100px; */
+  width: 12px;
+  height: 300px;
+  padding-left: 154px
 }
 #chatSendButton{
   width: 180px;
