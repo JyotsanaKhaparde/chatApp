@@ -42,6 +42,7 @@ function userLogin(username, password)
     })
         .then(function (response) 
         {
+            localStorage.setItem('sender',username);
             toast("Login Successfully.....",{position: toast.POSITION.BOTTOM_CENTER});
             console.log(response);
             window.location.href = '/dashboard'

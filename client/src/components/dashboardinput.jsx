@@ -28,7 +28,6 @@ class DashboardInput extends Component {
             arrayOfMessage: []
         }
     }
-
     componentDidMount() {
         getUser()
             .then((result) => {
@@ -48,11 +47,26 @@ class DashboardInput extends Component {
         event.preventDefault();
         displayChat(this.state.message);
         this.setState({
-            message:''
+            message:'',
+            anchorEl : null
         })
-        this.setState({displayMessage})
+        this.setState({displayMessage : this.state.message})
+        this.state.arrayOfMessage.push(this.state.message);
+        console.log('message array: ',this.state.arrayOfMessage);
+        this.handleClick = this.handleClick.bind(this);     
+    }
+    handleClick = (key,event) => {
+        this.setState({anchorEl : null});
+        console.log('selected receiver : ',this.target.textContent);       
     }
     render() {
+        const loginUser = this.state.usersData.map((key) => {
+            if(key.email !== localStorage.getItem('sender')){
+                return (
+                    <MenuItem>{key.email}</MenuItem>
+                )
+            }
+        })
         return (
             <div>
                 <div style={{ display: "flex", flexDirection: "row", height: "515px" }}>
@@ -60,10 +74,8 @@ class DashboardInput extends Component {
                         <div>
                             <h3>Online User</h3>
                             {/* <textarea id="onlineUser" />   */}
-                            {this.state.usersData.map((key) =>
-                                <MenuItem>{key.email}</MenuItem>)}
-                        </div>
-                        
+                             {loginUser}
+                        </div>                    
                     </div>
                     <textarea id="chatTextField" />
                 </div>
@@ -80,5 +92,4 @@ class DashboardInput extends Component {
         )
     }
 }
-
 export default DashboardInput;
