@@ -25,6 +25,7 @@ class DashboardInput extends Component {
             arrayOfMessage: []
         }
     }
+    //it call after the method render
     componentDidMount() {
         getUser()
             .then((result) => {
