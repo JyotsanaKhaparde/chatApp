@@ -30,12 +30,12 @@ class LoginInput extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.username == "") //validation for username
+        if (this.state.username === "") //validation for username
         {
             toast("username cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
         }
         else
-            if (this.state.password == "") //validation for password
+            if (this.state.password === "") //validation for password
             {
                 toast("password cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
             }
@@ -59,7 +59,7 @@ class LoginInput extends Component {
     render() {
         return (
             <div>
-                <div className="container" className="App_form">
+                <div className="App_form">
                     <form onSubmit={this.handleSubmit}>
                         <div className="insideDiv">
                             <label><b>Username</b></label>

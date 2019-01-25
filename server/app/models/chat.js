@@ -5,46 +5,48 @@
  *  @version        : 1.0
  *  @since          : 16/01/2019
  **********************************************************************************/
-//require mongoose
 const mongoose = require('mongoose');
-//create instance of schema
-var mongoSchema = mongoose.Schema;
-var ChatSchema = new mongoSchema({
-    'senderId:':
-    {
-        type: mongoSchema.Types.ObjectId,
-        ref: 'user',
-        required: true
+//Creating chat schema using moongose
+const ChatSchema = mongoose.Schema({
+    senderName: {
+        type: String
     },
-    'receiverId':
-    {
-        type: mongoSchema.Types.ObjectId,
-        ref: 'user',
-        required: true
+    reciverName: {
+        type: String
     },
-    'message':
-    {
-        type: mongoSchema.Types.ObjectId,
-        ref: 'user',
-        required: true
+    message: {
+        type: String
     },
 });
+var chat = mongoose.model('Chat', ChatSchema);
 function chatModel() {
 
 }
-chatModel.prototype.save = (data, callback) => {
-    const newMsg = new data({
-        'senderId': data.senderId,
-        'receiverId': data.receiverId,
-        'message': data.message
-    });
-    newMsg.save((err, result) => {
+chatModel.prototype.peerChatMsgSaveModel = (req, callback) => {
+    console.log('req on model to save msg--26--', req);
+    
+    var newData = new chat(req);
+    newData.save((err, result) => {
+                    
         if (err) {
-            return callback(err);
+            callback(err);
+        } else {
+            callback(null, result);
         }
-        else {
-            return callback(null, result);
+    })
+}
+
+chatModel.prototype.getAllUserChats = (callback) => {
+    chat.find({}, (err, result) => {
+        if (err) 
+        {
+            callback(err);
+        }
+        else 
+        {       
+            callback(null, result);
         }
     });
 }
+
 module.exports = new chatModel();

@@ -11,7 +11,9 @@ import './App.css';
 import Login from './pages/login';
 import Registraion from './pages/registraion';
 import Dashboard from './pages/dashboard';
-
+import io from 'socket.io-client';
+const socket = io.connect('http://localhost:3001');
+socket.emit('connection');
 class App extends Component {
   render() {
     return (

@@ -7,12 +7,24 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 const chatModel = require('../app/models/chat');
-exports.dashboard = (data, callback) => {
-    chatModel.save(data, (err, result) => {
+exports.peerChatMsgSaveService = (req, callback) => {
+    chatModel.peerChatMsgSaveModel(req, (err, result) => {
+                  
         if (err) {
             callback(err)
+        } else {
+            callback(null, result);
         }
-        else {
+    })
+}
+
+exports.getAllUserChats = (req,callback) => 
+{
+    chatModel.getAllUserChats(req,(err, result) => 
+    {     
+        if (err) {     
+            callback(err);
+        } else {
             callback(null, result);
         }
     })

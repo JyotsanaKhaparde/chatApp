@@ -9,12 +9,13 @@
 import React, { Component } from "react";
 import { TextField, Button, MenuItem } from '@material-ui/core'
 import io from 'socket.io-client';
-import { getUser, displayChat } from "../services/chatservice";
-const socket = io.connect('http://localhost:3002');
-socket.emit('new_msg', "hello");
-socket.on('send_msg', (data) => {
-    console.log(data);
-})
+import { getUser, displayChat, userCatArray } from "../services/chatservice";
+import DisplayMessages from "./displayMessage";
+// const socket = io.connect('http://localhost:3001');
+// socket.emit('new_msg', "hello");
+// socket.on('send_msg', (data) => {
+//     console.log(data);
+// })
 class DashboardInput extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +23,9 @@ class DashboardInput extends Component {
             message: "",
             usersData: [],
             displayMessage: "",
-            arrayOfMessage: []
+            arrayOfMessage: [],
+            sender:'',
+            receiver:''
         }
     }
     //it call after the method render
@@ -32,18 +35,35 @@ class DashboardInput extends Component {
                 this.setState({
                     usersData: result.data.result
                 })
-                console.log("user", result.data.result);
+                // console.log("user", result.data.result);
+            })
+            .catch((error) => {
+                alert(error);
+            });
+
+        userCatArray()
+            .then((result) => {
+                this.setState({
+                    arrayOfMessage: result.data.result
+                })
+                // console.log("msg array ----", this.state.arrayOfMessage);
             })
             .catch((error) => {
                 alert(error);
             });
     }
+
     handleMessage = (e) => {
         this.setState({ message: e.target.value });
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        displayChat(this.state.message);
+        let sender = localStorage.getItem('sender')
+        this.setState({sender:sender})
+        console.log('Sender is:---',sender);
+        console.log(' receiver is : ', this.state.receiver);
+        displayChat(sender , this.state.receiver,this.state.message);
+
         this.setState({
             message: '',
             anchorEl: null
@@ -51,11 +71,13 @@ class DashboardInput extends Component {
         this.setState({ displayMessage: this.state.message })
         this.state.arrayOfMessage.push(this.state.message);
         console.log('message array: ', this.state.arrayOfMessage);
+
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick = (key, event) => {
         this.setState({ anchorEl: null });
-        console.log('selected receiver : ', this.target.textContent);
+        let receiver = event.target.textContent;
+        this.setState({receiver:receiver})   
     }
     render() {
         return (
@@ -64,15 +86,35 @@ class DashboardInput extends Component {
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
                         <div>
                             <h3>Online User</h3>
-
                             {this.state.usersData.map((key) =>
                                 key.email !== localStorage.getItem('sender') ?
-                                    <MenuItem>{key.email}</MenuItem>
+                                    <MenuItem onClick={(event) => this.handleClick(key,event)}>{key.email}</MenuItem>
                                     : null
                             )}
                         </div>
                     </div>
-                    <textarea id="chatTextField" />
+                    <div style={{
+                        marginLeft: "60px",
+                        borderRadius: "10px",
+                        padding: "10px",
+                        backgroundColor: "navajowhite",
+                        color: "black",
+                        border: "4px solid black",
+                        width:"500px"
+                    }}>
+                        <DisplayMessages chatArray={this.state.arrayOfMessage}
+                        receiverName={this.state.receiver}/>
+
+                    </div>
+                    {/* <input disabled="true" style={{
+                        marginLeft: "60px",
+                        borderRadius: "10px",
+                        padding: "10px",
+                        backgroundColor: "navajowhite",
+                        color: "black"
+                    }}
+                        value={this.state.message} /> */}
+
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <TextField
@@ -81,7 +123,7 @@ class DashboardInput extends Component {
                         value={this.state.message}
                         onChange={this.handleMessage}
                     />
-                    <Button id="chatSendButton">Send</Button>
+                    <Button id="chatSendButton" onClick={this.handleSubmit}>Send</Button>
                 </div>
             </div>
         )

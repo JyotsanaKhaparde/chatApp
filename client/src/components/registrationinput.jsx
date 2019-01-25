@@ -45,19 +45,19 @@ class RegistrationInput extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        if (this.state.firstname == "") {
+        if (this.state.firstname ==="") {
             toast("firstname cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
         }
         else
-            if (this.state.lastname == "") {
+            if (this.state.lastname === "") {
                 toast("lastname cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
             }
             else
-                if (this.state.email == "") {
+                if (this.state.email === "") {
                     toast("email cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
                 }
                 else
-                    if (this.state.password == "") {
+                    if (this.state.password === "") {
                         toast("password cannot be empty", { position: toast.POSITION.BOTTOM_CENTER });
                     }
                     else
@@ -69,7 +69,7 @@ class RegistrationInput extends Component {
                                 toast("password must be of atleast 8 character long", { position: toast.POSITION.BOTTOM_CENTER });
                             }
                             else
-                                if (this.state.confirmpassword == "") {
+                                if (this.state.confirmpassword === "") {
                                     toast("Confirm password con not be empty", { position: toast.POSITION.BOTTOM_CENTER });
                                 }
                                 else
@@ -88,7 +88,7 @@ class RegistrationInput extends Component {
         return (
             <div>
                 <form>
-                    <div className="container" className="App_form">
+                    <div className="App_form">
                         <div className="insideDiv">
                             <table>
                                 <tr><td>First Name</td>
@@ -104,7 +104,7 @@ class RegistrationInput extends Component {
                                     <td><input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.handlepasswordChange} /></td>
                                 </tr>
                                 <tr><td>Confirm Password</td>
-                                    <td><input type="password" placeholder="Enter Confirm Password" value="confirmpassword" value={this.state.confirmpassword} onChange={this.handleconfirmpasswordChange} /></td>
+                                    <td><input type="password" placeholder="Enter Confirm Password" name="confirmpassword" value={this.state.confirmpassword} onChange={this.handleconfirmpasswordChange} /></td>
                                 </tr>
                             </table>
                         </div>

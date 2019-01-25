@@ -8,18 +8,19 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 const userService = require('../services/user_service');
-const { check, validationResult } = require('express-validator/check')
+const { check, validationResult } = require('express-validator/check');
 exports.registration = (req, res) => {
     var responseResult = {};
-    check('firstName', 'First name can not be empty').isEmpty();
-    check('firstName', 'First name should contain only alphabets').isAlpha();
-    check('lastName', 'Last name can not be empty').isEmpty();
-    check('lastName', 'Last name should contain only alphabets').isAlpha();
-    check('email', 'User name cannot be empty').isEmpty();
-    check('email', 'User name must be an email').isEmail();
-    check('password', 'Password cannot be empty').isEmpty();
-    check('password', 'Password must be atleast 8 characters long').isLength({ min: 8 });
-    // Find the validation errors in this request
+    check('firstName', 'firstname cannot be empty').isEmpty();
+    check('firstName', 'firstname must contain only alphabets').isAlpha();
+    check('lastName', 'lastname cannot be empty').isEmpty();
+    check('lastName', 'lastname must contain only alphabets').isAlpha();
+    check('email', 'username cannot be empty').isEmpty();
+    check('email', 'username must be an email').isEmail();
+    check('password', 'password cannot be empty').isEmpty();
+    check('password', 'password must be atleast 8 characters long').isLength({ min: 8 });
+
+    // Finds the validation errors in this request and wraps them in an object with handy functions
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).send({
@@ -27,6 +28,7 @@ exports.registration = (req, res) => {
             message: err,
         });
     }
+
     userService.registration(req.body, (err, result) => {
         if (err) {
             responseResult.success = false;
@@ -34,6 +36,7 @@ exports.registration = (req, res) => {
             res.status(500).send(responseResult)
         }
         else {
+
             responseResult.success = true;
             responseResult.result = result;
             res.status(200).send(responseResult);
@@ -42,6 +45,21 @@ exports.registration = (req, res) => {
 }
 exports.login = (req, res) => {
     var responseResult = {};
+    console.log('48 ---in user ctrl');
+    
+    check('email', 'username cannot be empty').isEmpty();
+    check('email', 'username must be an email').isEmail();
+    check('password', 'password cannot be empty').isEmpty();
+    check('password', 'password must be atleast 8 characters long').isLength({ min: 8 });
+
+    // Finds the validation errors in this request and wraps them in an object with handy functions
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).send({
+            status: false,
+            message: err,
+        });
+    }
     userService.login(req.body, (err, result) => {
         if (err) {
             responseResult.success = false;
@@ -55,11 +73,11 @@ exports.login = (req, res) => {
         }
     })
 }
-exports.getAllUserName = (req, res) => {
+
+exports.getAllUser = (req,res) => {
     var responseResult = {};
-    userService.getAllUserName((err, result) => {
+    userService.getAllUser((err, result) => {
         if (err) {
-            console.log("in ctrl");
             responseResult.success = false;
             responseResult.error = err;
             res.status(500).send(responseResult)

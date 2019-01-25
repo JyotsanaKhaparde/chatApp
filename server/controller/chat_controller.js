@@ -8,22 +8,37 @@
  *  @since          : 16/01/2019
  **********************************************************************************/
 const chatService = require('../services/chat_service');
-const { check, resultValidation } = require('express-validator/check')
-exports.dashboard = (req, res) => {
+// exports.dashboard = (req, res) => {
+//     var responseResult = {};
+//     chatService.dashboard(req.body, (err, result) => {
+//         if (err) {
+//             responseResult.success = false;
+//             responseResult.error = err;
+//             res.status(500).send(responseResult)
+//         } else {
+//             responseResult.success = true;
+//             responseResult.result = result;
+//             res.status(200).send(responseResult);
+//         }
+//     })
+// }
+
+exports.peerChatMsgSaveController = (req, callback) => {
+    // console.log('requested message---', req);
+    chatService.peerChatMsgSaveService(req, (err, result) => {
+        if (err) {
+            // console.log('29 chatController.js err--', err);
+            return callback(err);
+        } else {
+            // console.log('32 chat_Controller.js result--', result);
+            return callback(null, result);
+        }
+    })
+}
+
+exports.getAllUserChats = (req,res) => {
     var responseResult = {};
-    check('senderName', 'sender name can not be empty').isEmpty();
-    check('senderName', 'sender name should contain only alphabets').isAlpha();
-    check('reciverName', 'reciver name can not be empty').isEmpty();
-    check('reciverName', 'reciver name should contain only alphabets').isAlpha();
-    // Find the validation errors in this request
-    const errors = resultValidation(req);
-    if (!errors.isEmpty()) {
-        return res.status(422).send({
-            status: false,
-            message: err,
-        });
-    }
-    chatService.dashboard(req.body, (err, result) => {
+    chatService.getAllUserChats((err, result) => {
         if (err) {
             responseResult.success = false;
             responseResult.error = err;
