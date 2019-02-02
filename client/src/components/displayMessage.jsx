@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class DisplayMessages extends Component {
     render() {
         console.log();
-        
         return (
             this.props.chatArray.map((key) =>
                 <div>
@@ -18,11 +17,9 @@ class DisplayMessages extends Component {
                                 ) : (
                                     null
                                 )
-
                         ) : (
                             null
                         )}
-
                     {
                         key.senderName === this.props.receiverName ? (
                             <div className="receiver-div">
@@ -36,7 +33,6 @@ class DisplayMessages extends Component {
                 </div>
             )
         )
-
     }
 }
 export default DisplayMessages;

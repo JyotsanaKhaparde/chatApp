@@ -50,6 +50,8 @@ class LoginInput extends Component {
                     }
                     else {
                         userLogin(this.state.username, this.state.password); //function of services which pass username ans password
+                        this.setState({ username: '' })
+                        this.setState({ password: '' })
                     }
     }
     registrationclick = (e) => {

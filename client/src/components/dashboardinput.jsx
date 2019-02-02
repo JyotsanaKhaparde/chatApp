@@ -21,15 +21,16 @@ class DashboardInput extends Component {
         super(props);
         this.state = {
             message: "",
-            usersData: [],
             displayMessage: "",
+            usersData: [],
             arrayOfMessage: [],
-            sender:'',
-            receiver:''
+            sender: '',
+            receiver: ''
         }
     }
     //it call after the method render
     componentDidMount() {
+        //get all the user
         getUser()
             .then((result) => {
                 this.setState({
@@ -59,10 +60,10 @@ class DashboardInput extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         let sender = localStorage.getItem('sender')
-        this.setState({sender:sender})
-        console.log('Sender is:---',sender);
+        this.setState({ sender: sender })
+        console.log('Sender is:---', sender);
         console.log(' receiver is : ', this.state.receiver);
-        displayChat(sender , this.state.receiver,this.state.message);
+        displayChat(sender, this.state.receiver, this.state.message);
 
         this.setState({
             message: '',
@@ -77,33 +78,35 @@ class DashboardInput extends Component {
     handleClick = (key, event) => {
         this.setState({ anchorEl: null });
         let receiver = event.target.textContent;
-        this.setState({receiver:receiver})   
+        this.setState({ receiver: receiver })
     }
     render() {
         return (
             <div>
                 <div style={{ display: "flex", flexDirection: "row", height: "515px" }}>
                     <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <div>
+                        <div style={{
+                            overflowY:"auto"
+                        }}> 
                             <h3>Online User</h3>
                             {this.state.usersData.map((key) =>
                                 key.email !== localStorage.getItem('sender') ?
-                                    <MenuItem onClick={(event) => this.handleClick(key,event)}>{key.email}</MenuItem>
+                                    <MenuItem onClick={(event) => this.handleClick(key, event)}>{key.email}</MenuItem>
                                     : null
                             )}
                         </div>
                     </div>
                     <div style={{
-                        marginLeft: "60px",
+                        marginLeft: "20px",
                         borderRadius: "10px",
                         padding: "10px",
-                        backgroundColor: "navajowhite",
+                        backgroundColor: "#d0d0e1",
                         color: "black",
                         border: "4px solid black",
-                        width:"500px"
+                        width: "1000px"
                     }}>
                         <DisplayMessages chatArray={this.state.arrayOfMessage}
-                        receiverName={this.state.receiver}/>
+                            receiverName={this.state.receiver} />
 
                     </div>
                     {/* <input disabled="true" style={{
